@@ -20,7 +20,7 @@ public class AdventOfCodeMain {
 
         System.out.println("------ Day 1: Frequency ------");
         System.out.println(frequencyCounter.getFrequency());
-        System.out.println(frequencyCounter.twiceFrequency());
+        //System.out.println(frequencyCounter.twiceFrequency());
 
         System.out.println("------ Day 2: Checksum ------");
         System.out.println(checksum.checksum());
@@ -35,5 +35,7 @@ public class AdventOfCodeMain {
         System.out.println(guards.getMostFrequentGuard());
 
         System.out.println("------ Day 5: Polymers ------");
+        System.out.println(polymers.getUnits());
+        System.out.println(polymers.getShortestPolymer());
     }
 }
