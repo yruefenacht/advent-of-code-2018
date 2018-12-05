@@ -1,5 +1,6 @@
 package Day1;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ import java.util.Scanner;
 
 public class FrequencyCounter {
 
-    public int getFrequency() throws IOException {
+    public int getFrequency() throws FileNotFoundException {
 
         int result = 0;
 
@@ -19,7 +20,7 @@ public class FrequencyCounter {
         return result;
     }
 
-    public int twiceFrequency() throws IOException {
+    public int twiceFrequency() throws FileNotFoundException {
 
         int result = 0;
         int finalResult = 0;
@@ -47,7 +48,7 @@ public class FrequencyCounter {
         return finalResult;
     }
 
-    private ArrayList<Integer> getList() throws IOException{
+    private ArrayList<Integer> getList() throws FileNotFoundException {
 
         ArrayList<Integer> list = new ArrayList<>();
         Scanner scanner = new Scanner(new FileReader("src/Day1/frequencies.txt"));
