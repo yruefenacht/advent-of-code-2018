@@ -38,10 +38,11 @@ public class AdventOfCodeMain {
 
         System.out.println("------ Day 5: Polymers ------");
         System.out.println(polymers.getUnits());
-        System.out.println(polymers.getShortestPolymer());
+        //System.out.println(polymers.getShortestPolymer());
 
         System.out.println("------ Day 6: Coordinates ------");
         System.out.println(coordinates.getLargestArea());
+        System.out.println(coordinates.getRegion());
 
     }
 }
