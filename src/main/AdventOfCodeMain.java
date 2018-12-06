@@ -5,6 +5,7 @@ import Day2.Checksum;
 import Day3.Areas;
 import Day4.Guards;
 import Day5.Polymers;
+import Day6.Coordinates;
 
 import java.io.FileNotFoundException;
 
@@ -17,6 +18,7 @@ public class AdventOfCodeMain {
         Areas areas                         = new Areas();
         Guards guards                       = new Guards();
         Polymers polymers                   = new Polymers();
+        Coordinates coordinates             = new Coordinates();
 
         System.out.println("------ Day 1: Frequency ------");
         System.out.println(frequencyCounter.getFrequency());
@@ -37,5 +39,9 @@ public class AdventOfCodeMain {
         System.out.println("------ Day 5: Polymers ------");
         System.out.println(polymers.getUnits());
         System.out.println(polymers.getShortestPolymer());
+
+        System.out.println("------ Day 6: Coordinates ------");
+        System.out.println(coordinates.getLargestArea());
+
     }
 }
