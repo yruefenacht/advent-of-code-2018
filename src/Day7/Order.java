@@ -3,6 +3,8 @@ package Day7;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,9 +13,9 @@ public class Order {
 
 
     private ArrayList<Letter> letters = new ArrayList<>();
+    String abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    public String getOrder() throws FileNotFoundException {
-
+    public Order() throws FileNotFoundException {
 
         Scanner scanner = new Scanner(new FileReader("src/Day7/orders"));
         while(scanner.hasNext()) {
@@ -46,13 +48,16 @@ public class Order {
             l.addPreConLetter(preCon);
 
         }
+    }
+
+    public String getOrder() {
 
         String finalOrder = "";
 
         ArrayList<Letter> setLetters = new ArrayList<>();
         ArrayList<Letter> availableLetters = getAvailableLetters(setLetters);
 
-        for(int i = 0; i < 26; i++) {
+        while(! availableLetters.isEmpty()) {
 
             availableLetters = getAvailableLetters(setLetters);
             String currentLetter = getFirstAlphLetter(availableLetters);
@@ -66,7 +71,7 @@ public class Order {
 
     private String getFirstAlphLetter(ArrayList<Letter> letters) {
 
-        String abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
         int firstIndex = 25;
         char firstLetter = 'Z';
         for(Letter l : letters) {
@@ -105,4 +110,61 @@ public class Order {
             if(letter.getName().equals(l.getName())) return true;
         return false;
     }
+
+
+    public int countDuration() {
+
+        ArrayList<Worker> workers = new ArrayList<>();
+        Worker worker1 = new Worker();
+        Worker worker2 = new Worker();
+        Worker worker3 = new Worker();
+        Worker worker4 = new Worker();
+        Worker worker5 = new Worker();
+        workers.add(worker1);
+        workers.add(worker2);
+        workers.add(worker3);
+        workers.add(worker4);
+        workers.add(worker5);
+
+        ArrayList<Letter> setLetters = new ArrayList<>();
+        ArrayList<Letter> availableLetters = getAvailableLetters(setLetters);
+
+        int counter = 0;
+
+        while(! availableLetters.isEmpty()) {
+
+
+            availableLetters = getAvailableLetters(setLetters);
+
+            Collections.sort(availableLetters, Comparator.comparing(Letter::getName));
+
+            for(Letter letter : availableLetters) {
+
+                for(Worker worker : workers) {
+                    if(! worker.isBusy() && !isWorkedOn(workers, letter.getName())) {
+                        worker.setWork(letter.getName(), 61 + abc.indexOf(letter.getName()));
+                    }
+
+                    worker.work();
+
+                    if(!worker.isBusy() && worker.getLetter() != "") {
+                        setLetters.add(getLetterByName(worker.getLetter()));
+                    }
+                }
+            }
+
+
+            counter++;
+        }
+
+
+        return counter;
+    }
+
+    private boolean isWorkedOn(ArrayList<Worker> workers, String letter) {
+        for(Worker worker : workers)
+            if(worker.getLetter().equals(letter)) return true;
+        return false;
+    }
+
 }
