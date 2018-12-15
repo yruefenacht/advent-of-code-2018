@@ -141,17 +141,18 @@ public class Order {
             for(Letter letter : availableLetters) {
 
                 for(Worker worker : workers) {
+
                     if(! worker.isBusy() && !isWorkedOn(workers, letter.getName())) {
                         worker.setWork(letter.getName(), 61 + abc.indexOf(letter.getName()));
                     }
 
-                    worker.work();
-
-                    if(!worker.isBusy() && worker.getLetter() != "") {
+                    if(worker.isDone()) {
                         setLetters.add(getLetterByName(worker.getLetter()));
                     }
                 }
             }
+
+            for(Worker w : workers) w.work();
 
 
             counter++;
