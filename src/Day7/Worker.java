@@ -1,34 +1,35 @@
 package Day7;
 
-public class Worker {
+class Worker {
 
     private int currentWork = 0;
     private String letter = "";
-    private boolean isDone = false;
+    private WorkerState state = WorkerState.READY;
 
-    public void setWork(String letter, int min) {
+    void setWork(String letter, int min) {
+
         this.currentWork = min;
         this.letter = letter;
-        this.isDone = false;
+        this.state = WorkerState.WORKING;
     }
 
-    public void work() {
-        if(this.isBusy()) {
-            this.currentWork--;
-            if(this.currentWork == 0) this.isDone = true;
-            System.out.println(letter);
+    void work() {
+
+        if(this.state == WorkerState.WORKING) {
+            currentWork--;
+            if(currentWork == 0) {
+                this.state = WorkerState.FINISHED;
+            }
         }
     }
 
-    public boolean isBusy() {
-        return this.currentWork > 0;
-    }
-
-    public String getLetter() {
+    String getLetter() {
         return this.letter;
     }
 
-    public boolean isDone() {
-        return this.isDone;
+    void reset() {
+        this.currentWork = 0;
+        this.state = WorkerState.READY;
     }
+
 }

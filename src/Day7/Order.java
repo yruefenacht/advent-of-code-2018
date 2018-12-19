@@ -129,10 +129,9 @@ public class Order {
         ArrayList<Letter> setLetters = new ArrayList<>();
         ArrayList<Letter> availableLetters = getAvailableLetters(setLetters);
 
-        int counter = 0;
+        int counter = 1;
 
         while(! availableLetters.isEmpty()) {
-
 
             availableLetters = getAvailableLetters(setLetters);
 
@@ -142,18 +141,21 @@ public class Order {
 
                 for(Worker worker : workers) {
 
-                    if(! worker.isBusy() && !isWorkedOn(workers, letter.getName())) {
+                    /*
+                    if(worker.getLetter().equals("") && !isWorkedOn(workers, letter.getName())) {
                         worker.setWork(letter.getName(), 61 + abc.indexOf(letter.getName()));
                     }
 
-                    if(worker.isDone()) {
+                    if(worker.isFinished()) {
                         setLetters.add(getLetterByName(worker.getLetter()));
+                        worker.reset();
                     }
+                    */
+
                 }
             }
 
             for(Worker w : workers) w.work();
-
 
             counter++;
         }
