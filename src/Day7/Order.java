@@ -131,14 +131,16 @@ public class Order {
 
         int max = 1911;
         int counter = 0;
+        String order = "";
 
-        while(! availableLetters.isEmpty()) {
+
+        while(order.length() < letters.size()) {
 
             availableLetters = getAvailableLetters(setLetters);
 
             Collections.sort(availableLetters, Comparator.comparing(Letter::getName));
 
-            for(Worker w : workers) w.work();
+            for(Worker w : workers) order += w.work();
 
             for(Letter letter : availableLetters) {
 
