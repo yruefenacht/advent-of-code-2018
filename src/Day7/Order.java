@@ -129,7 +129,8 @@ public class Order {
         ArrayList<Letter> setLetters = new ArrayList<>();
         ArrayList<Letter> availableLetters = getAvailableLetters(setLetters);
 
-        int counter = 1;
+        int max = 1911;
+        int counter = 0;
 
         while(! availableLetters.isEmpty()) {
 
@@ -137,31 +138,45 @@ public class Order {
 
             Collections.sort(availableLetters, Comparator.comparing(Letter::getName));
 
+            for(Worker w : workers) w.work();
+
             for(Letter letter : availableLetters) {
 
                 for(Worker worker : workers) {
 
-                    /*
-                    if(worker.getLetter().equals("") && !isWorkedOn(workers, letter.getName())) {
-                        worker.setWork(letter.getName(), 61 + abc.indexOf(letter.getName()));
-                    }
+                    if(worker.getState() == WorkerState.FINISHED) {
 
-                    if(worker.isFinished()) {
                         setLetters.add(getLetterByName(worker.getLetter()));
                         worker.reset();
+
+                    }else if(worker.getState() == WorkerState.READY) {
+
+                        if(! isWorkedOn(workers, letter.getName()) && ! containsLetter(setLetters, letter))
+                            worker.setWork(letter.getName(), 61 + abc.indexOf(letter.getName()));
+
                     }
-                    */
 
                 }
             }
+            //previous output: 1135
+            if(isBeingWorked(workers)) counter++;
 
-            for(Worker w : workers) w.work();
-
-            counter++;
+            if(worker2.getState() == WorkerState.WORKING) max -= 1;
+            if(worker3.getState() == WorkerState.WORKING) max -= 1;
+            if(worker4.getState() == WorkerState.WORKING) max -= 1;
+            if(worker5.getState() == WorkerState.WORKING) max -= 1;
         }
 
-
+        System.out.println("Max: " + max);
         return counter;
+    }
+
+
+
+    private boolean isBeingWorked(ArrayList<Worker> workers) {
+        for(Worker w : workers)
+            if(w.getState() == WorkerState.WORKING) return true;
+        return false;
     }
 
     private boolean isWorkedOn(ArrayList<Worker> workers, String letter) {

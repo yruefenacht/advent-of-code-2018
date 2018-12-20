@@ -2,6 +2,7 @@ package Day7;
 
 class Worker {
 
+    int testCounter = 0;
     private int currentWork = 0;
     private String letter = "";
     private WorkerState state = WorkerState.READY;
@@ -16,9 +17,11 @@ class Worker {
     void work() {
 
         if(this.state == WorkerState.WORKING) {
+            testCounter++;
             currentWork--;
             if(currentWork == 0) {
                 this.state = WorkerState.FINISHED;
+                System.out.println(this.letter + ": took " + testCounter + " minutes");
             }
         }
     }
@@ -27,8 +30,14 @@ class Worker {
         return this.letter;
     }
 
+    WorkerState getState() {
+        return this.state;
+    }
+
     void reset() {
+        testCounter = 0;
         this.currentWork = 0;
+        this.letter = "";
         this.state = WorkerState.READY;
     }
 
