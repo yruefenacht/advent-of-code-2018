@@ -47,7 +47,7 @@ public class AdventOfCodeMain {
         System.out.println(coordinates.getRegion());
 
         System.out.println("------ Day 7: Order ------");
-        //System.out.println(order.getOrder());
+        System.out.println(order.getOrder());
         System.out.println(order.countDuration());
 
 

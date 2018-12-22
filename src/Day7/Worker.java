@@ -2,23 +2,40 @@ package Day7;
 
 class Worker {
 
-    private boolean working = false;
-    private Letter workingOn = null;
+    int testCounter = 0;
+    private int currentWork = 0;
+    private String letter = "";
+    private WorkerState state = WorkerState.READY;
 
-    public boolean isWorking() {
-        return working;
+    void setWork(String letter, int min) {
+
+        this.currentWork = min;
+        this.letter = letter;
+        this.state = WorkerState.WORKING;
     }
 
-    void setWorking(boolean working) {
-        this.working = working;
+    void work() {
+
+        if(this.state == WorkerState.WORKING) {
+            testCounter++;
+            currentWork--;
+            if(currentWork == 0) this.state = WorkerState.FINISHED;
+        }
     }
 
-    public Letter getWorkingOn() {
-        return workingOn;
+    String getLetter() {
+        return this.letter;
     }
 
-    void setCurrentWork(Letter workingOn) {
-        this.workingOn = workingOn;
+    WorkerState getState() {
+        return this.state;
+    }
+
+    void reset() {
+        testCounter = 0;
+        this.currentWork = 0;
+        this.letter = "";
+        this.state = WorkerState.READY;
     }
 
 }

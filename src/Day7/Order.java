@@ -129,18 +129,16 @@ public class Order {
         ArrayList<Letter> setLetters = new ArrayList<>();
         ArrayList<Letter> availableLetters = getAvailableLetters(setLetters);
 
-        int max = 1911;
-        int counter = 0;
-        String order = "";
+        //int max = 1911;
+        int counter = -2;
 
-
-        while(order.length() < letters.size()) {
+        while(! availableLetters.isEmpty()) {
 
             availableLetters = getAvailableLetters(setLetters);
 
             Collections.sort(availableLetters, Comparator.comparing(Letter::getName));
 
-            for(Worker w : workers) order += w.work();
+            for(Worker w : workers) w.work();
 
             for(Letter letter : availableLetters) {
 
@@ -160,20 +158,12 @@ public class Order {
 
                 }
             }
-            //previous output: 1135
-            if(isBeingWorked(workers)) counter++;
 
-            if(worker2.getState() == WorkerState.WORKING) max -= 1;
-            if(worker3.getState() == WorkerState.WORKING) max -= 1;
-            if(worker4.getState() == WorkerState.WORKING) max -= 1;
-            if(worker5.getState() == WorkerState.WORKING) max -= 1;
+            if(isBeingWorked(workers)) counter++;
         }
 
-        System.out.println("Max: " + max);
         return counter;
     }
-
-
 
     private boolean isBeingWorked(ArrayList<Worker> workers) {
         for(Worker w : workers)
