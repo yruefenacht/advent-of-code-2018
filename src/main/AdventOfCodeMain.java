@@ -7,6 +7,7 @@ import Day4.Guards;
 import Day5.Polymers;
 import Day6.Coordinates;
 import Day7.Order;
+import Day8.Nodes;
 
 import java.io.FileNotFoundException;
 
@@ -21,6 +22,7 @@ public class AdventOfCodeMain {
         Polymers polymers                   = new Polymers();
         Coordinates coordinates             = new Coordinates();
         Order order                         = new Order();
+        Nodes nodes                         = new Nodes();
 
         System.out.println("------ Day 1: Frequency ------");
         System.out.println(frequencyCounter.getFrequency());
@@ -50,7 +52,7 @@ public class AdventOfCodeMain {
         System.out.println(order.getOrder());
         System.out.println(order.countDuration());
 
-
+        System.out.println();
 
     }
 }
