@@ -52,7 +52,9 @@ public class AdventOfCodeMain {
         System.out.println(order.getOrder());
         System.out.println(order.countDuration());
 
-        System.out.println();
+        System.out.println("------ Day 8: Nodes ------");
+        System.out.println(nodes.getMetaDataSum());
+        System.out.println(nodes.getRootValue());
 
     }
 }
