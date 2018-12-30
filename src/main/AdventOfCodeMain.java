@@ -8,6 +8,7 @@ import Day5.Polymers;
 import Day6.Coordinates;
 import Day7.Order;
 import Day8.Nodes;
+import Day9.MarbleMania;
 
 import java.io.FileNotFoundException;
 
@@ -23,6 +24,7 @@ public class AdventOfCodeMain {
         Coordinates coordinates             = new Coordinates();
         Order order                         = new Order();
         Nodes nodes                         = new Nodes();
+        MarbleMania marbleMania             = new MarbleMania(427, 70723);
 
         System.out.println("------ Day 1: Frequency ------");
         System.out.println(frequencyCounter.getFrequency());
@@ -55,6 +57,9 @@ public class AdventOfCodeMain {
         System.out.println("------ Day 8: Nodes ------");
         System.out.println(nodes.getMetaDataSum());
         System.out.println(nodes.getRootValue());
+
+        System.out.println("------ Day 9: Marble Mania ------");
+        System.out.println(marbleMania.getMaxScore());
 
     }
 }
