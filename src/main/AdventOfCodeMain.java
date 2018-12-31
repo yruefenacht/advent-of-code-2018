@@ -1,6 +1,7 @@
 package main;
 
 import Day1.FrequencyCounter;
+import Day10.Stars;
 import Day2.Checksum;
 import Day3.Areas;
 import Day4.Guards;
@@ -25,6 +26,7 @@ public class AdventOfCodeMain {
         Order order                         = new Order();
         Nodes nodes                         = new Nodes();
         MarbleMania marbleMania             = new MarbleMania(427, 70723);
+        Stars stars                         = new Stars();
 
         System.out.println("------ Day 1: Frequency ------");
         System.out.println(frequencyCounter.getFrequency());
@@ -59,7 +61,10 @@ public class AdventOfCodeMain {
         System.out.println(nodes.getRootValue());
 
         System.out.println("------ Day 9: Marble Mania ------");
-        System.out.println(marbleMania.getMaxScore());
+        //System.out.println(marbleMania.getMaxScore());
+
+        System.out.println("------ Day 10: StarsOld ------");
+        stars.printStars();
 
     }
 }
