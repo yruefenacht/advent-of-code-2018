@@ -64,7 +64,6 @@ public class AdventOfCodeMain {
         //System.out.println(marbleMania.getMaxScore());
 
         System.out.println("------ Day 10: StarsOld ------");
-        stars.printStars();
 
     }
 }
